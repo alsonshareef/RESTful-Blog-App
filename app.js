@@ -9,7 +9,6 @@ app.set("view engine", "ejs");
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({extended: true}));
 
-
 // MONGOOSE MODEL CONFIG
 let blogSchema = new mongoose.Schema({
     title: String,
@@ -21,6 +20,23 @@ let blogSchema = new mongoose.Schema({
 let Blog = mongoose.model("Blog", blogSchema);
 
 // RESTful ROUTES ========================================================
+
+// ROOT
+app.get("/", function(req, res){
+    res.redirect("/blogs");
+});
+
+// INDEX
+app.get("/blogs", function(req, res){  
+    Blog.find({}, function(err, blogs){
+        if (err) {
+            console.log("ERROR");
+        } else {
+            res.render("index.ejs", {blogs: blogs});
+        }
+    });
+});
+
 
 
 // =======================================================================
