@@ -37,7 +37,23 @@ app.get("/blogs", function(req, res){
     });
 });
 
+// NEW
+app.get("/blogs/new", function(req, res){
+    res.render("new.ejs");
+});
 
+// CREATE
+app.post("/blogs", function(req, res){
+    // Create blog
+    Blog.create(req.body.blog, function(err, newBlog){
+        if (err) {
+            res.render("new.ejs");
+        } else {
+            // Then, redirect to index.ejs
+            res.redirect("/blogs");
+        }
+    });
+});
 
 // =======================================================================
 
