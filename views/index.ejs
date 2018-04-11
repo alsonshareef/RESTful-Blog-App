@@ -3,7 +3,7 @@
 <div class="container-fluid" style="text-align: center" style="margin-top: 5px">
     <% blogs.forEach(function(blog){ %>
         <div class="img-thumbnail">
-            <h2 ><%= blog.title %></h2>
+            <h2 class="display-4"><%= blog.title %></h2>
             <img class="img-thumbnail" src="<%= blog.image %>">
             <span style="display: block"><%= blog.created.toDateString() %></span>
             <p><%= blog.body.substring(0, 100) %>...</p>
