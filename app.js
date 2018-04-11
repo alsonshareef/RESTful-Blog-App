@@ -50,6 +50,7 @@ app.get("/blogs/new", function(req, res){
 // CREATE
 app.post("/blogs", function(req, res){
     // Create blog
+    req.body.blog.body = req.sanitize(req.body.blog.body); // Sanitization code
     Blog.create(req.body.blog, function(err, newBlog){
         if (err) {
             res.render("new.ejs");
@@ -84,6 +85,7 @@ app.get("/blogs/:id/edit", function(req, res){
 
 // UPDATE
 app.put("/blogs/:id", function(req, res){
+    req.body.blog.body = req.sanitize(req.body.blog.body); // Sanitization code
     Blog.findByIdAndUpdate(req.params.id, req.body.blog, function(err, updatedBlog){
         if (err) {
             res.redirect("/blogs");

@@ -1,15 +1,15 @@
 <% include ./partials/header.ejs %>
 
-<h1>Index Page</h1>
-
-<% blogs.forEach(function(blog){ %>
-    <div>
-        <h2><%= blog.title %></h2>
-        <img src="<%= blog.image %>">
-        <span><%= blog.created.toDateString() %></span>
-        <p><%= blog.body.substring(0, 100) %>...</p>
-        <a href="/blogs/<%= blog._id %>">Read more!</a>
-    </div>
-<% }); %>
+<div class="container-fluid" style="text-align: center" style="margin-top: 5px">
+    <% blogs.forEach(function(blog){ %>
+        <div class="img-thumbnail">
+            <h2 ><%= blog.title %></h2>
+            <img class="img-thumbnail" src="<%= blog.image %>">
+            <span style="display: block"><%= blog.created.toDateString() %></span>
+            <p><%= blog.body.substring(0, 100) %>...</p>
+            <a href="/blogs/<%= blog._id %>">Read more!</a>
+        </div>
+    <% }); %>
+</div>
 
 <% include ./partials/footer.ejs %>
