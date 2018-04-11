@@ -1,0 +1,23 @@
+<% include ./partials/header.ejs %>
+
+<h1 class="display-3"> Edit <%= blog.title %></h1>
+
+<form action="/blogs" method="POST">
+    <div class="form-group">
+      <label><strong>Title</strong></label>
+      <input class="form-control" type="text" name="blog[title]" placeholder="Title">
+    </div>
+    <div class="form-group">
+        <label><strong>Image</strong></label>
+        <input class="form-control" type="text" name="blog[image]" placeholder="Image">
+    </div>
+    <div class="form-group">
+        <label><strong>Blog Content</strong></label>
+        <textarea class="form-control" name="blog[body]" placeholder="Blog post goes here"></textarea>
+    </div>
+    <div class="form-group">
+        <input class=" btn btn-primary form-control" type="submit"> 
+    </div>
+</form>
+
+<% include ./partials/footer.ejs %>
