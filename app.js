@@ -1,14 +1,17 @@
 const express = require("express");
 const app = express();
+
+const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const methodOverride = require("method-override");
-const mongoose = require("mongoose");
+const expressSanitizer = require("express-sanitizer");
 
 // APP CONFIG
 mongoose.connect("mongodb://localhost/restful_blog_app");
 app.set("view engine", "ejs");
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({extended: true}));
+app.use(expressSanitizer());
 app.use(methodOverride("_method"));
 
 // MONGOOSE MODEL CONFIG
