@@ -15,6 +15,7 @@ app.use(expressSanitizer());
 app.use(methodOverride("_method"));
 
 // MONGOOSE MODEL CONFIG
+// BLOG Schema
 const blogSchema = new mongoose.Schema({
     title: String,
     image: String,
@@ -23,6 +24,22 @@ const blogSchema = new mongoose.Schema({
 });
 
 const Blog = mongoose.model("Blog", blogSchema);
+
+// USER Schema
+const userSchema = new mongoose.Schema({
+    email: String,
+    name: String
+});
+
+const User = mongoose.model("User", userSchema);
+
+// POST Schema
+const postSchema = new mongoose.Schema({
+    title: String,
+    content: String
+});
+
+const Post = mongoose.model("Post", postSchema);
 
 // RESTful ROUTES ========================================================
 
@@ -105,6 +122,23 @@ app.delete("/blogs/:id", function(req, res){
         }
     });
 });
+
+// EMBEDDED DATA =========================================================
+// Users
+let newUser = new User({
+    email: "alson.shareef@gmail.com",
+    name: "Alson Shareef"
+});
+
+newUser.save(function(err, user){
+    if (err) {
+        console.log(err);
+    } else {
+        console.log(user);
+    }
+});
+
+// Posts
 
 // =======================================================================
 
