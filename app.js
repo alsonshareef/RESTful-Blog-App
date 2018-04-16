@@ -25,14 +25,6 @@ const blogSchema = new mongoose.Schema({
 
 const Blog = mongoose.model("Blog", blogSchema);
 
-// USER Schema
-const userSchema = new mongoose.Schema({
-    email: String,
-    name: String
-});
-
-const User = mongoose.model("User", userSchema);
-
 // POST Schema
 const postSchema = new mongoose.Schema({
     title: String,
@@ -40,6 +32,15 @@ const postSchema = new mongoose.Schema({
 });
 
 const Post = mongoose.model("Post", postSchema);
+
+// USER Schema
+const userSchema = new mongoose.Schema({
+    email: String,
+    name: String,
+    posts: [postSchema]
+});
+
+const User = mongoose.model("User", userSchema);
 
 // RESTful ROUTES ========================================================
 
